@@ -55,8 +55,15 @@ public class OptimusPrime {
     }
 
     public static void main(String[] args) {
-	    OptimusPrime op = new OptimusPrime(120);
+        long start;
+
+	    OptimusPrime op = new OptimusPrime(40000);
+        start = System.currentTimeMillis();
 	    op.basicSolution();
+        System.out.println("Basic " + (System.currentTimeMillis() - start) + " ms");
+
+        start = System.currentTimeMillis();
 	    op.secondSolutionWithStream();
+        System.out.println("Stream " + (System.currentTimeMillis() - start) + " ms");
     }
 }
