@@ -35,7 +35,7 @@ public class OptimusPrime {
 
     void secondSolutionWithStream(){
         Stream<Integer> primesStream = IntStream
-                                            .rangeClosed(2, limit+1)
+                                            .rangeClosed(2, limit)
                                             .filter(num -> isPrime(num))
                                             .boxed();
         List<Integer> primes = primesStream.collect(Collectors.toList());
