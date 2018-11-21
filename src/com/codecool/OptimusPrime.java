@@ -2,6 +2,9 @@ package com.codecool;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 public class OptimusPrime {
 
@@ -28,11 +31,31 @@ public class OptimusPrime {
             }
         }
         System.out.println(primes);
+    }
 
+    void secondSolutionWithStream(){
+        Stream<Integer> primesStream = IntStream.rangeClosed(2, limit+1).filter(num -> isPrime(num)).boxed();
+        List<Integer> primes = primesStream.collect(Collectors.toList());
+        System.out.println(primes);
+    }
+
+
+    private boolean isPrime(Integer num){
+        boolean flag = true;
+        for(int i = 2; i <= num/2; ++i)
+        {
+            if(num % i == 0)
+            {
+                flag = false;
+                break;
+            }
+        }
+        return flag;
     }
 
     public static void main(String[] args) {
 	    OptimusPrime op = new OptimusPrime(120);
 	    op.basicSolution();
+	    op.secondSolutionWithStream();
     }
 }
